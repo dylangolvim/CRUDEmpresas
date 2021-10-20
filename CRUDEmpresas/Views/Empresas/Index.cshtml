@@ -1,0 +1,53 @@
+﻿@model IEnumerable<CRUDEmpresas.Models.Empresas>
+
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<h1>Cadastro de Empresas</h1>
+
+<p>
+    <a asp-action="Cadastrar">Cadastrar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompaniesName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompaniesCNPJ)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompaniesName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompaniesCNPJ)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Editar" asp-route-id="@item.CompaniesID">Editar</a> |
+                <a asp-action="Detalhes" asp-route-id="@item.CompaniesID">Detalhes</a> |
+                <a asp-action="Deletar" asp-route-id="@item.CompaniesID">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
